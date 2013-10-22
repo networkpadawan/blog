@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content_title %}{% endblock %}
+{% block content %}        
+{% if articles %}
+{% for article in (articles_page.object_list if articles_page else articles) %}        
+<article>
+        <h2><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</h2></a>
+        {% include "metadata.html" %}
+	<br></br>
+        <div class="summary">{{ article.summary }}</div> 
+	<a class="btn btn-default btn-xs" href="{{ SITEURL }}/{{ article.url }}">read</a>
+</article>
+<hr/>
+{% if loop.last and (articles_page.has_previous() or not articles_page.has_previous() and loop.length > 1) %}
+	{% include 'pagination.html' %}
+{% endif %}
+{% endfor %} 
+{% endif %}
+
+{% endblock content %}
+

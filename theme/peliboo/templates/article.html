@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class='article'>
+        <div class="content-subhead">
+            <h2>{{ article.title }}</h2>
+        </div>
+	
+        <div>{{ article.content }}</div>
+	<br />
+	{% include "metadata.html" %}    	   
+	{% include "twitter.html" %}
+	<br />
+        {% include "disqus.html" %}
+    </div>
+{% endblock %}
